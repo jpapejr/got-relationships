@@ -13,8 +13,8 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build the image
-      run: docker build -t docker.pkg.github.com/jpapejr/got-relationships/app:latest .
+      run: docker build -t docker.pkg.github.com/jpapejr/got-relationships/app:${{github.ref}} .
     - name: Authenticate to Github Package Registry
       run: docker login docker.pkg.github.com --username jpapejr --password ${{secrets.GITHUB_PAT}}
     - name: Push the image
-      run: docker push docker.pkg.github.com/jpapejr/got-relationships/app:latest
+      run: docker push docker.pkg.github.com/jpapejr/got-relationships/app:${{github.ref}}
