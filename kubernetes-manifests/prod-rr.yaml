@@ -1,0 +1,9 @@
+apiVersion: deploy.razee.io/v1alpha1
+kind: RemoteResource
+metadata:
+  name: got-relationships-rr
+  namespace: default
+spec:
+  requests:
+    - options:
+        url: https://raw.githubusercontent.com/jpapejr/got-relationships/master/kubernetes-manifests/prod.yaml
