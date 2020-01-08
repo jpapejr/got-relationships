@@ -47,4 +47,4 @@ spec:
       - path: /
         backend:
           serviceName: got-relationships-service
-          servicePort: 80
+          servicePort: 8081
