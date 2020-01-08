@@ -1,0 +1,52 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: got-relationships-deployment
+  labels:
+    app: got-relationships
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: got-relationships
+  template:
+    metadata:
+      labels:
+        app: got-relationships
+    spec:
+      containers:
+      - name: app
+        image: got-relationships
+        ports:
+        - containerPort: 8081
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: got-relationships-service
+spec:
+  selector:
+    app: got-relationships
+  ports:
+  - protocol: TCP
+    port: 8081 
+    name: http
+    targetPort: 8081
+  type: ClusterIP
+# ---
+# apiVersion: extensions/v1beta1
+# kind: Ingress
+# metadata:
+#   name: got-relationships-ingress
+#   annotations:
+#     ingress.bluemix.net/rewrite-path: "serviceName=got-relationships-service rewrite=/"
+# spec:
+#   rules:
+#   - host: iks-test-2.tor01.containers.appdomain.cloud
+#     http:
+#       paths:
+#       - path: /got
+#         backend:
+#           serviceName: got-relationships-service
+#           servicePort: 80

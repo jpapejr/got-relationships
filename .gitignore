@@ -39,3 +39,6 @@ build/Release
 
 ### Bower ###
 bower_components/
+
+### Tilt ###
+Tiltfile.imageRegistry
