@@ -1,0 +1,24 @@
+# This Dockerfile is different from the base Dockerfile in that it
+# skips a lot of the grunt tasks that we'd do for a production build
+# (i.e uglifying, minifying, etc.). Those are great things to do but also
+# cause us pain when using Tilt because it causes us to need to rebuild
+# the container image on each change (live_update doesn't work because we'd
+# just be copying un-minified/uglified stuff over and it doesn't work right).
+FROM node:slim
+ADD app /var/www/html
+ADD bower.json /var/www/html/bower.json
+WORKDIR /var/www/html
+RUN apt update \
+    && apt install -y nginx git\
+    && apt upgrade patch subversion -y
+RUN npm install -g bower eslint \
+    && npm install \
+    && bower install --allow-root    
+COPY entrypoint.sh /entrypoint.sh
+RUN sed -i 's/listen\(.*\)80 default_server;/listen 8081 default_server;/' /etc/nginx/sites-enabled/default \
+    && sed -i '23d' /etc/nginx/sites-enabled/default
+
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
+EXPOSE 8081
