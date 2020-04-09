@@ -5,7 +5,8 @@ metadata:
   name: got-relationships-deployment
   labels:
     app: got-relationships
-    razee/watch-resource: detail
+    razee/watch-resource: "detail"
+    deploy.razee.io/Reconcile: "true"
 spec:
   replicas: 3
   selector:
@@ -27,7 +28,8 @@ kind: Service
 metadata:
   name: got-relationships-service
   labels:
-    razee/watch-resource: detail
+    razee/watch-resource: "detail"
+    deploy.razee.io/Reconcile: "true"
 spec:
   selector:
     app: got-relationships
@@ -43,7 +45,8 @@ kind: Ingress
 metadata:
   name: got-relationships-ingress  
   labels:
-    razee/watch-resource: detail  
+    razee/watch-resource: "detail"
+    deploy.razee.io/Reconcile: "true"
 spec:
   rules:
   - host: got-relationships.apps.example.com
