@@ -1,0 +1,24 @@
+metadata:
+  name: got-relationships
+components:
+  - id: che-incubator/typescript/latest
+    memoryLimit: 512Mi
+    type: chePlugin
+  - mountSources: true
+    endpoints:
+      - name: nodejs
+        port: 3000
+    memoryLimit: 512Mi
+    type: dockerimage
+    alias: nodejs
+    image: 'quay.io/eclipse/che-nodejs10-ubi:nightly'
+  - id: eclipse/che-machine-exec-plugin/7.11.0
+    type: chePlugin
+  - id: redhat/vscode-openshift-connector/latest
+    type: chePlugin
+apiVersion: 1.0.0
+projects:
+  - name: got-relationships
+    source:
+      type: git
+      location: 'https://github.com/jpapejr/got-relationships'
