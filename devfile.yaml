@@ -11,7 +11,12 @@ components:
     memoryLimit: 512Mi
     type: dockerimage
     alias: nodejs
-    image: 'quay.io/eclipse/che-nodejs10-ubi:nightly'
+    image: 'jpapejr/che-node-12:latest'
+  - mountSources: true
+    memoryLimit: 512Mi
+    type: dockerimage
+    alias: ibmcloud
+    image: 'docker.io/jpapejr/ibm-cloud-developer-tools-amd64:latest'
   - id: eclipse/che-machine-exec-plugin/7.11.0
     type: chePlugin
   - id: redhat/vscode-openshift-connector/latest
