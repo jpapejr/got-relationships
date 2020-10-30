@@ -4,7 +4,9 @@ WORKDIR /app
 RUN npm install -g grunt-cli bower eslint \
     && npm install \
     && bower install --allow-root \
-    && grunt dist
+    && grunt dist \
+    && apt-get clean \
+    && echo 'Finished installing dependencies'
 
 FROM node:latest
 RUN apt update \

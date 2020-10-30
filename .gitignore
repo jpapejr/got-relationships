@@ -42,3 +42,10 @@ bower_components/
 
 ### Tilt ###
 Tiltfile.imageRegistry
+
+
+### IBM Cloud ###
+server/localdev-config.json
+vcap-local.js
+credentials.json
+localdev-config.json
