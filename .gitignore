@@ -41,7 +41,8 @@ build/Release
 bower_components/
 
 ### Tilt ###
-Tiltfile.imageRegistry
+tilt_option.json
+tilt_modules/
 
 
 ### IBM Cloud ###

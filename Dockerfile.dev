@@ -5,6 +5,7 @@
 # the container image on each change (live_update doesn't work because we'd
 # just be copying un-minified/uglified stuff over and it doesn't work right).
 FROM node:slim
+COPY . /var/www/html
 ADD app /var/www/html
 ADD bower.json /var/www/html/bower.json
 WORKDIR /var/www/html
